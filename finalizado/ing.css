@@ -1,0 +1,64 @@
+.algo {
+    background-color: rgb(0, 60, 129, 0.0);
+    color: rgb(0, 0, 0);
+    border: 2px double yellow;
+    text-align: center;
+    font-style: italic;
+}
+
+.grid {
+    background-color: rgba(0, 22, 121, 0.5);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    color: aliceblue;
+    width: 20%;
+    height: 10%;
+    border: 2px double yellow;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.corpo {
+    background-image: url("ingle.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th,td {
+    color: rgb(255, 255, 255);
+    background-color: rgb(161, 161, 161, 0.4);
+    border: 1px solid white;
+    padding: 8px;
+    text-align: center;
+}
+
+button {
+    height: 40px;
+    font-size: 40px;
+    background-color: rgb(161, 161, 161, 0.4);
+    font-family: 'Franklin Gothic Medium';
+    color: rgb(255, 255, 255);
+
+}
+
+.f {
+    background-color: rgb(199, 107, 2);
+    color: rgb(0, 0, 0);
+    position: absolute;
+    size: 20px;
+    height: 20px;
+    border-style: double;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+
+}
