@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button type="button" onclick="toggleAba()">Exibir Informações Extras</button>
+
+<!-- A aba escondida -->
+<div id="minhaAba" style="display: none; margin-top: 20px; padding: 10px; border: 1px solid #ccc; background: #f9f9f9;">
+    <h3>Regras da Escola</h3>
+    <p>1. Média para aprovação: 7.0</p>
+    <p>2. Média para recuperação: 5.0</p>
+</div>
+
+<script>
+function toggleAba() {
+    let aba = document.getElementById("minhaAba");
+    
+    // Se estiver escondida, mostra. Se estiver visível, esconde.
+    if (aba.style.display === "none") {
+        aba.style.display = "block";
+    } else {
+        aba.style.display = "none";
+    }
+}
+</script>
+</body>
+</html>

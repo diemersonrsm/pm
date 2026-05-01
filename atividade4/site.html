@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="site.css">
+    <title>Minha Empresa</title>
+    </head>
+    
+<div class="parent">
+    
+    <header class="div1" >
+        <div class="censurado">
+            <h1>EMPRESA CENSURADA</h1>
+        </div>
+    </header>
+    
+    <section class="div2">
+        <button type="button" onclick="toggleAba2('minhaAba2')">CONTATOS:</button>
+       
+        <div id="minhaAba2" class="treco">
+            <h2>Conteúdo de Contatos</h2>
+        </div>
+    </section>
+
+    <nav class="div3">
+        <h3>Menu de Opções</h3>
+        <button type="button" onclick="toggleAba3('minhaAba3')">Trabalhos</button>
+        <button type="button" onclick="toggleAba('minhaAba')">Informações</button>
+    </nav>
+
+   
+    <main id="minhaAba" class="div4 treco">
+        <h3>Conteúdo de Informações</h3>
+    </main>
+
+  
+    <aside id="minhaAba3" class="div5 treco">
+        <table>
+            <tr>
+                <th>Título</th>
+                <th>Valor 1</th>
+            </tr>
+            <tr>
+                <td>Trabalho A</td>
+                <td>1314143</td>
+            </tr>
+        </table>
+    </aside>
+
+</div>
+
+<script>
+function toggleAba() {
+    let aba = document.getElementById("minhaAba");
+    
+   
+    if (aba.style.display === "none") {
+        aba.style.display = "block";
+    } else {
+        aba.style.display = "none";
+    }
+}
+function toggleAba2() {
+    let aba = document.getElementById("minhaAba2");
+    
+  
+    if (aba.style.display === "none") {
+        aba.style.display = "block";
+    } else {
+        aba.style.display = "none";
+    }
+}
+function toggleAba3() {
+    let aba = document.getElementById("minhaAba3");
+    
+  
+    if (aba.style.display === "none") {
+        aba.style.display = "block";
+    } else {
+        aba.style.display = "none";
+    }
+}
+</script>
+
+</html>
