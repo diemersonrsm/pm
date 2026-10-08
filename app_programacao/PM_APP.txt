@@ -1,268 +1,227 @@
 import React, { useState } from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  TouchableOpacity,
-  Alert,
-  TextInput,
-} from 'react-native';
+import { StyleSheet, Text, TextInput, TouchableOpacity, ScrollView, Alert } from 'react-native';
 
-export default function App() {
-  const [telaAtual, setTelaAtual] = useState('Home');
+export default function CadastroAlunosScreen() {
+  const [nomeAluno, setNomeAluno] = useState('');
+  const [infoAluno, setInfoAluno] = useState('');
+  const [dataNasc, setDataNasc] = useState('');
+  const [ruaAluno, setRuaAluno] = useState('');
+  const [idAluno, setIdAluno] = useState('');
 
-  // Estado para armazenar o input do usuário
-  const [texto, setTexto] = useState('');
-
-  // Função para lidar com o envio dos dados do input
   const lidarComEnvio = () => {
-    if (texto.trim() === '') {
+    if (nomeAluno.trim() === '') {
       Alert.alert('Aviso', 'Por favor, digite o nome antes de salvar!');
       return;
     }
-    Alert.alert('Sucesso!', `Aluno gravado:\\\\\\\\n${texto}`);
-    setTexto(''); // Limpa o campo após salvar
+    Alert.alert('Sucesso!', `Aluno gravado:\nNome: ${nomeAluno}\nID: ${idAluno}`);
+    setNomeAluno('');
+    setInfoAluno('');
+    setDataNasc('');
+    setRuaAluno('');
+    setIdAluno('');
   };
 
-  if (telaAtual === 'Home') {
-    return (
-      <View style={styles.container}>
-        <Image source={require('./assets/download.jpg')} style={styles.logo} />
-        <Text style={styles.titulo}>APP Scholar</Text>
-        <Text style={styles.subtitulo}>Sistema Acadêmico Mobile</Text>
-        <Text style={styles.tituloSecundario}>Painel do Banco</Text>
+  return (
+    <ScrollView contentContainerStyle={styles.conteudoScroll}>
+      <Text style={styles.titulo}>Cadastro de Alunos</Text>
 
-        <TouchableOpacity
-          style={styles.botao}
-          onPress={() => setTelaAtual('cadastroalunos')}>
-          <Text style={styles.textoBotao}>Cadastrar Aluno</Text>
-        </TouchableOpacity>
+      <TextInput style={styles.input} placeholder="Digite o nome do aluno..." placeholderTextColor="#999" value={nomeAluno} onChangeText={setNomeAluno} />
+      <TextInput style={styles.input} placeholder="Digite as informações do aluno..." placeholderTextColor="#999" value={infoAluno} onChangeText={setInfoAluno} />
+      <TextInput style={styles.input} placeholder="Data de nascimento (DD/MM/AAAA)..." placeholderTextColor="#999" value={dataNasc} onChangeText={setDataNasc} />
+      <TextInput style={styles.input} placeholder="Digite a rua do aluno..." placeholderTextColor="#999" value={ruaAluno} onChangeText={setRuaAluno} />
+      <TextInput style={styles.input} placeholder="Digite o ID do aluno..." placeholderTextColor="#999" value={idAluno} onChangeText={setIdAluno} />
 
-        <TouchableOpacity
-          style={styles.botao}
-          onPress={() => setTelaAtual('cadastroProfessores')}>
-          <Text style={styles.textoBotao}>Cadastrar professores</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          style={styles.botao}
-          onPress={() => setTelaAtual('cadastroCoordenadores')}>
-          <Text style={styles.textoBotao}>cadastro coordenadores</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          style={styles.botao}
-          onPress={() => setTelaAtual('Sobre')}>
-          <Text style={styles.textoBotao}>sobre</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          style={styles.botao}
-          onPress={() => setTelaAtual('entrar')}>
-          <Text style={styles.textoBotao}>entrar</Text>
-        </TouchableOpacity>
-      </View>
-    );
-  }
-
-  if (telaAtual === 'Sobre') {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.titulo}>Sobre o APP Scholar</Text>
-        <Text style={styles.caixa}>place holder</Text>
-        <TouchableOpacity
-          style={styles.botaoVoltar}
-          onPress={() => setTelaAtual('Home')}>
-          <Text style={styles.textoBotao}>Voltar para o Início</Text>
-        </TouchableOpacity>
-      </View>
-    );
-  }
-
-  if (telaAtual === 'cadastroalunos') {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.titulo}>Cadastro de Alunos</Text>
-
-        {/* Campo de Input integrado aqui */}
-        <TextInput
-          style={styles.input}
-          placeholder="Digite o nome do aluno..."
-          placeholderTextColor="#999"
-          value1={texto}
-          onChangeText={(valor1) => setTexto(valor1)}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="digite as informações do aluno..."
-          placeholderTextColor="#999"
-          value2={texto}
-          onChangeText={(valor2) => setTexto(valor2)}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="digite a data de nacimento do aluno..."
-          placeholderTextColor="#999"
-          value3={Date}
-          onChangeText={(valor3) => setTexto(valor3)}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="digite a rua do aluno..."
-          placeholderTextColor="#999"
-          value4={texto}
-          onChangeText={(valor4) => setTexto(valor4)}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="digite o id do aluno..."
-          placeholderTextColor="#999"
-          value5={texto}
-          onChangeText={(valor5) => setTexto(valor5)}
-        />
- 
-        {/* Botão de salvar integrado aqui */}
-        <TouchableOpacity style={styles.botaoSalvar} onPress={lidarComEnvio}>
-          <Text style={styles.textoBotao}>Salvar Aluno</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          style={styles.botaoVoltar}
-          onPress={() => setTelaAtual('Home')}>
-          <Text style={styles.textoBotao}>Voltar para o Início</Text>
-        </TouchableOpacity>
-      </View>
-    );
-  }
-
-  if (telaAtual === 'cadastroProfessores') {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.titulo}>Cadastro Professores</Text>
-        <Text style={styles.caixa}>place holder</Text>
-        <TouchableOpacity
-          style={styles.botaoVoltar}
-          onPress={() => setTelaAtual('Home')}>
-          <Text style={styles.textoBotao}>Voltar para o Início</Text>
-        </TouchableOpacity>
-      </View>
-    );
-  }
-
-  if (telaAtual === 'cadastroCoordenadores') {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.titulo}>Cadastro Coordenadores</Text>
-        <Text style={styles.caixa}>place holder</Text>
-        <TouchableOpacity
-          style={styles.botaoVoltar}
-          onPress={() => setTelaAtual('Home')}>
-          <Text style={styles.textoBotao}>Voltar para o Início</Text>
-        </TouchableOpacity>
-      </View>
-    );
-  }
-
-  if (telaAtual === 'entrar') {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.titulo}>Entrar</Text>
-        <Text style={styles.caixa}>place holder</Text>
-        <TouchableOpacity
-          style={styles.botaoVoltar}
-          onPress={() => setTelaAtual('Home')}>
-          <Text style={styles.textoBotao}>Voltar para o Início</Text>
-        </TouchableOpacity>
-      </View>
-    );
-  }
+      <TouchableOpacity style={styles.botaoSalvar} onPress={lidarComEnvio}>
+        <Text style={styles.textoBotao}>Salvar Aluno</Text>
+      </TouchableOpacity>
+    </ScrollView>
+  );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
+  conteudoScroll: {
     alignItems: 'center',
-    backgroundColor: 'black',
-    padding: 8,
+    paddingVertical: 40,
+  },
+  titulo: {
+    fontSize: 28,
+    fontWeight: 'bold',
+    color: '#1565C0',
+    textAlign: 'center',
+    marginBottom: 20,
   },
   input: {
-    width: '80%',
+    width: '90%',
     backgroundColor: '#FFFFFF',
     padding: 15,
     borderRadius: 8,
     marginBottom: 15,
-    borderWidth: 1,
-    borderColor: '#bdc3c7',
     fontSize: 16,
+    color: '#000',
   },
   botaoSalvar: {
-    width: '80%',
+    width: '90%',
     backgroundColor: '#2ecc71',
     padding: 15,
     borderRadius: 10,
-    marginBottom: 15,
     alignItems: 'center',
     borderWidth: 3,
     borderColor: '#27ae60',
-    elevation: 5,
-  },
-  logo: {
-    width: 150,
-    height: 150,
-    marginBottom: 20,
-  },
-  titulo: {
-    fontSize: 32,
-    fontWeight: 'bold',
-    color: '#1565C0',
-    textAlign: 'center',
-    marginBottom: 10,
-  },
-  tituloSecundario: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: '#1565C0',
-    marginBottom: 15,
-  },
-  subtitulo: {
-    fontSize: 18,
-    marginBottom: 40,
-    color: 'white',
-  },
-  botao: {
-    width: '80%',
-    backgroundColor: '#8F00FF',
-    padding: 15,
-    borderRadius: 10,
-    marginBottom: 15,
-    alignItems: 'center',
-    borderWidth: 3,
-    borderColor: '#FF007F',
-    elevation: 8,
-  },
-  botaoVoltar: {
-    width: '80%',
-    backgroundColor: '#8F00FF',
-    padding: 15,
-    borderRadius: 10,
-    marginTop: 30,
-    alignItems: 'center',
-    borderWidth: 1,
-    borderColor: '#FF007F',
   },
   textoBotao: {
     fontSize: 18,
     fontWeight: 'bold',
     color: '#FFFFFF',
   },
-  caixa: {
-    width: '80%',
-    backgroundColor: '#d3d3d3',
-    padding: 15,
-    borderRadius: 10,
-    marginBottom: 15,
+});
+------------------------------------------
+import React from 'react';
+import { StyleSheet, Text, View } from 'react-native';
+
+export default function SobreScreen() {
+  return (
+    <View style={styles.conteudoCentral}>
+      <Text style={styles.titulo}>Sobre o APP Scholar</Text>
+      <Text style={styles.caixa}>Versão 1.0.0 - Desenvolvido para fins acadêmicos.</Text>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  conteudoCentral: {
+    flex: 1,
+    justifyContent: 'center',
     alignItems: 'center',
+  },
+  titulo: {
+    fontSize: 28,
+    fontWeight: 'bold',
+    color: '#1565C0',
+    textAlign: 'center',
+    marginBottom: 10,
+  },
+  caixa: {
+    width: '90%',
+    backgroundColor: '#333',
+    padding: 20,
+    borderRadius: 10,
+    color: 'white',
+    textAlign: 'center',
+  },
+});
+-------------------------------------------------
+import React from 'react';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+
+export default function TabBar({ telaAtual, setTelaAtual }) {
+  const abas = [
+    { id: 'Home', label: 'Início' },
+    { id: 'cadastroalunos', label: 'Alunos' },
+    { id: 'cadastroProfessores', label: 'Profs' },
+    { id: 'cadastroCoordenadores', label: 'Coords' },
+    { id: 'Sobre', label: 'Sobre' },
+  ];
+
+  return (
+    <View style={styles.barraAbas}>
+      {abas.map((aba) => (
+        <TouchableOpacity
+          key={aba.id}
+          style={[styles.aba, telaAtual === aba.id && styles.abaAtiva]}
+          onPress={() => setTelaAtual(aba.id)}
+        >
+          <Text style={styles.textoAba}>{aba.label}</Text>
+        </TouchableOpacity>
+      ))}
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  barraAbas: {
+    flexDirection: 'row',
+    backgroundColor: '#1c1c1e',
+    borderTopWidth: 1,
+    borderTopColor: '#3a3a3c',
+    height: 65,
+    paddingBottom: 5,
+  },
+  aba: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  abaAtiva: {
+    backgroundColor: '#2c2c2e',
+    borderTopWidth: 3,
+    borderTopColor: '#8F00FF',
+  },
+  textoAba: {
+    color: 'white',
+    fontSize: 11,
+    fontWeight: '600',
+  },
+});
+------------------------------------------------------
+import React, { useState } from 'react';
+import { StyleSheet, View, SafeAreaView, Text } from 'react-native';
+
+// Importando os códigos menores que você separou
+import HomeScreen from './src/screens/HomeScreen';
+import CadastroAlunosScreen from './src/screens/CadastroAlunosScreen';
+import SobreScreen from './src/screens/SobreScreen';
+import TabBar from './src/components/TabBar';
+
+export default function App() {
+  const [telaAtual, setTelaAtual] = useState('Home');
+
+  // Função que escolhe qual tela menor renderizar
+  const renderConteudo = () => {
+    switch (telaAtual) {
+      case 'Home':
+        return <HomeScreen />;
+      case 'cadastroalunos':
+        return <CadastroAlunosScreen />;
+      case 'Sobre':
+        return <SobreScreen />;
+      case 'cadastroProfessores':
+        return <View style={styles.center}><Text style={styles.txt}>Cadastro de Professores</Text></View>;
+      case 'cadastroCoordenadores':
+        return <View style={styles.center}><Text style={styles.txt}>Cadastro de Coordenadores</Text></View>;
+      default:
+        return <HomeScreen />;
+    }
+  };
+
+  return (
+    <SafeAreaView style={styles.container}>
+      {/* Exibe a tela atual */}
+      <View style={styles.areaConteudo}>
+        {renderConteudo()}
+      </View>
+
+      {/* Exibe a barra de abas passando o controle de estado para ela */}
+      <TabBar telaAtual={telaAtual} setTelaAtual={setTelaAtual} />
+    </SafeAreaView>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: 'black',
+  },
+  areaConteudo: {
+    flex: 1,
+    padding: 16,
+  },
+  center: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  txt: {
+    color: 'white',
+    fontSize: 18,
   },
 });
